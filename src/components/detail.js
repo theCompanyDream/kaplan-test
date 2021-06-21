@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react'
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useParams } from "react-router-dom"
 import { queryString } from 'query-string'
 
 import { BookContext } from './'
@@ -17,6 +17,8 @@ const Detail = () => {
 	}
 
 	useEffect(() => {
+		let { id } = useParams();
+
 		if (id) {
 			const book = data.items.find((book) => book.id == id)
 			if (book) {
