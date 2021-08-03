@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react'
-import { Link, useLocation, useHistory } from "react-router-dom"
+import { Link, useLocation, useHistory, useParams } from "react-router-dom"
 import DateTimePicker from 'react-datetime-picker'
-import queryString from 'query-string'
 
 import { BookContext } from './'
 import "./styles/detail.scss"
@@ -9,6 +8,7 @@ import "./styles/detail.scss"
 const Detail = () => {
 
 	const [isEdit, setState] = useState(false)
+	let { id } = useParams();
 	const { search } = useLocation()
 	const history = useHistory()
 	const data = useContext(BookContext)
@@ -29,7 +29,6 @@ const Detail = () => {
 	}
 
 	useEffect(() => {
-		let { id } = useParams();
 
 		if (id) {
 			const book = data.items.find((book) => book.id == id)
